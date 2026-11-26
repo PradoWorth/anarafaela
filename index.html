@@ -659,7 +659,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 @media(max-width:520px){#historia .cta .btn{flex:1 1 100%;min-height:48px}}
 
 /* hero desktop: cena maior e alinhada a margem direita */
-@media(min-width:861px) and (orientation:landscape),(min-width:1101px){.hero .stage{justify-content:flex-end;align-items:center;overflow:visible}.hero{padding-top:clamp(32px,7vh,72px)}.hero .sbox{width:min(100cqw,calc(100cqh * 620 / 568 * 560 / 620))}.hero .txt.al{align-self:start}}
+@media(min-width:861px) and (orientation:landscape),(min-width:1101px){.hero .stage{justify-content:flex-end;align-items:flex-end;overflow:visible}.hero{padding-top:clamp(32px,7vh,72px)}.hero .sbox{width:min(100cqw,calc(100cqh * 620 / 568 * 560 / 620));margin-bottom:max(0px,calc((100cqh - min(100cqw * 620 / 560,100cqh * 620 / 568)) / 2))}.hero .txt.al{align-self:start}}
 
 /* menu no estilo editorial: menu e busca a esquerda, marca ao centro, atalhos a direita */
 .nav .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;min-height:64px;padding-block:0}
@@ -792,6 +792,7 @@ img{pointer-events:auto}
 .drawer::-webkit-scrollbar-thumb,.bp-list::-webkit-scrollbar-thumb,.bagpop::-webkit-scrollbar-thumb{background:#cdbf9f;border-radius:99px}
 .drawer::-webkit-scrollbar-thumb:hover,.bp-list::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 .drawer::-webkit-scrollbar-button,.bp-list::-webkit-scrollbar-button{display:none;height:0;width:0}
+
 </style>
 </head>
 <body>
