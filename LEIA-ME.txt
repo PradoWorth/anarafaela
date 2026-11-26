@@ -1,0 +1,10 @@
+STUDIO ANA RAFAELA, PUBLICACAO
+
+1. Antes de desligar o site antigo, rode o baixar-fotos.sh nesta pasta.
+   Ele salva as fotos que ainda vem do site antigo dentro de img/.
+2. Envie todo o conteudo desta pasta para a raiz do dominio
+   (inclusive o arquivo .htaccess, que fica oculto em alguns sistemas).
+3. No index.html, procure "const CFG" e preencha quando tiver:
+   ga4 (Google Analytics), pixel (Meta), notaGoogle, avaliacoesGoogle
+   (nota do Google e total de avaliacoes).
+4. Cadastre o site no Google Search Console e envie o sitemap.xml.
