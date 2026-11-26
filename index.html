@@ -109,7 +109,7 @@ body.promo-off .promo{transform:translateY(-100%);pointer-events:none}
 .nav.scrolled{border-color:rgba(43,41,38,.08)}
 .nav.scrolled::before{background:rgba(250,248,244,.9);-webkit-backdrop-filter:saturate(170%) blur(20px);backdrop-filter:saturate(170%) blur(20px)}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.nav.scrolled::before{background:rgba(250,248,244,.96)}}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px clamp(20px,8vw,120px);max-width:none}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px max(var(--pad),calc((100% - 1200px)/2));max-width:none}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:17px;font-weight:600;letter-spacing:-.025em}
 .logo svg{width:13px;height:18px}.logo .lgm{width:36px;height:36px;color:var(--ink);--lg2:#a39d93;flex:none}
 .links{display:flex;align-items:center;gap:2px}
@@ -559,7 +559,7 @@ main>section.band.dark,main>section.band.deep,footer{background-image:var(--grai
 .fly{position:fixed;z-index:120;font-weight:700;font-size:15px;color:var(--acc);background:#e6f1ea;border-radius:99px;padding:3px 9px;pointer-events:none;transform:translate(-50%,-50%);animation:fly .9s ease-out forwards}
 @keyframes fly{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}20%{opacity:1;transform:translate(-50%,-90%) scale(1)}100%{opacity:0;transform:translate(-50%,-260%) scale(.9)}}
 @media(prefers-reduced-motion:reduce){.btn:active,.add:active{transform:none}}
-#resultados{background:linear-gradient(180deg,var(--bg) 0,var(--bg) calc(100% - 110px),var(--sand) 100%)!important}#faixa{border-top:0!important}
+#resultados{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--bg) 0,var(--bg) calc(100% - 250px),color-mix(in srgb,var(--bg) 45%,var(--sand)) calc(100% - 120px),var(--sand) 100%)!important}#faixa{border-top:0!important}
 #servicos{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--paper) 0,var(--paper) calc(100% - 100px),var(--sand) 100%)!important}#mechas{border-top:0!important}
 #experiencia{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--paper) 0,var(--paper) calc(100% - 120px),var(--bg) 100%)!important}#ana{border-top:0!important}
 #faixa{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--sand) 0,var(--sand) calc(100% - 110px),var(--paper) 100%)!important}#servicos{border-top:0!important}
@@ -644,6 +644,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 .receipt.tight2 .rtot b{font-size:24px}
 
 /* pagina de historia: ajuste fino */
+#privacidade{padding:clamp(52px,7vh,64px) 0 clamp(64px,9vh,96px);background:var(--bg) var(--grain) 0 0/180px 180px}#privacidade .back{margin-bottom:clamp(20px,3vh,32px)}
 #historia{padding:clamp(52px,7vh,64px) 0 clamp(64px,9vh,96px);background:var(--bg) var(--grain) 0 0/180px 180px}
 #historia .back{margin-bottom:clamp(20px,3vh,32px)}
 #historia .hist{margin-top:0;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:start}
@@ -656,6 +657,122 @@ html.pre-on,html.pre-on body{overflow:hidden}
 #historia .cta{margin-top:10px}
 @media(max-width:860px){#historia .hist{grid-template-columns:minmax(0,1fr);gap:28px;max-width:640px;margin-inline:auto}#historia .back{max-width:640px;margin-inline:auto;width:100%}#historia .aphoto{position:relative;top:auto;justify-self:center;max-width:420px;width:100%;aspect-ratio:1/1}#historia .txt{max-width:none;padding-top:0}#historia .lead{font-size:16px;line-height:1.65}}
 @media(max-width:520px){#historia .cta .btn{flex:1 1 100%;min-height:48px}}
+
+/* hero desktop: cena maior e alinhada a margem direita */
+@media(min-width:861px) and (orientation:landscape),(min-width:1101px){.hero .stage{justify-content:flex-end;align-items:center;overflow:visible}.hero{padding-top:clamp(32px,7vh,72px)}.hero .sbox{width:min(100cqw,calc(100cqh * 620 / 568 * 560 / 620))}.hero .txt.al{align-self:start}}
+
+/* menu no estilo editorial: menu e busca a esquerda, marca ao centro, atalhos a direita */
+.nav .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px;min-height:64px;padding-block:0}
+.nav .nl,.nav .nr{display:flex;align-items:center;gap:clamp(6px,1.6vw,22px)}
+.nav .nr{justify-content:flex-end}
+.nav .logo{justify-self:center;font-family:'Marcellus',Georgia,serif;font-weight:400;font-size:19px;letter-spacing:.01em;color:var(--ink);white-space:nowrap;gap:10px}
+.nav .logo .lgm{width:34px;height:34px}
+.nav .menu,.nav .nsrch{display:inline-flex;align-items:center;gap:10px;width:auto;height:44px;padding:0 4px;border:0;border-radius:0;background:none;color:var(--ink);font:500 14px var(--font);cursor:pointer}
+.nav .menu span{display:inline;width:auto;height:auto;background:none;margin:0;transition:none;transform:none!important;border-radius:0}
+.nav .ntx{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;padding:12px 4px}
+.nav .nic{position:relative;display:grid;place-items:center;width:44px;height:44px;color:var(--ink);border-radius:50%;transition:background-color .2s}
+.nav .nic:hover,.nav .menu:hover,.nav .nsrch:hover,.nav .ntx:hover{opacity:.65}
+.nav .nct{position:absolute;top:6px;right:4px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--acc);color:#fff;font:600 10px/17px var(--font);font-style:normal;text-align:center}
+.nav .nct[hidden]{display:none}
+@media(max-width:860px){.nav .tx,.nav .menu .tx,.nav .ntx{display:none!important}.nav .wrap{gap:8px;min-height:58px}.nav .nl,.nav .nr{gap:0}.nav .menu,.nav .nsrch{width:40px;justify-content:center;padding:0}.nav .nic{width:40px;height:40px}.nav .nr .nic:not(.nbag){display:none}.nav .logo{font-size:16px;gap:8px}.nav .logo .lgm{width:30px;height:30px}}
+@media(max-width:360px){.nav .logo span{font-size:15px}.nav .logo .lgm{width:26px;height:26px}}
+/* gaveta */
+.drawer{position:fixed;top:0;left:0;bottom:0;z-index:60;width:min(460px,88vw);display:flex;flex-direction:column;background:var(--bg);box-shadow:0 0 48px rgba(0,0,0,.14);transform:translateX(-102%);visibility:hidden;transition:transform .45s cubic-bezier(.22,.61,.36,1),visibility 0s .45s;overflow-y:auto;overscroll-behavior:contain;padding:0 clamp(24px,3vw,40px) 32px}
+.drawer.open{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.dscrim{position:fixed;inset:0;z-index:55;background:rgba(20,24,21,.55);opacity:0;transition:opacity .4s}
+.dscrim.on{opacity:1}.dscrim[hidden]{display:none}
+.dtop{display:flex;align-items:center;gap:22px;min-height:64px;position:sticky;top:0;background:var(--bg);z-index:1}
+.dtop button{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0;border:0;background:none;color:var(--ink);font:500 14px var(--font);cursor:pointer}
+.dmain{display:flex;flex-direction:column;padding-top:clamp(12px,3vh,28px)}
+.drawer a{text-decoration:none;color:var(--ink)}
+.dmain a{font-size:17px;padding:12px 0;transition:color .2s}
+.dmain a:hover,.dsec a:hover{color:var(--acc)}
+.dmain a.active{color:#8a7a62}
+.dsec{display:flex;flex-direction:column;margin-top:clamp(28px,6vh,56px);padding-top:clamp(16px,3vh,24px);border-top:1px solid var(--line)}
+.dsec a{font-size:15px;color:var(--muted);padding:10px 0}
+.dfoot{margin-top:auto;padding-top:clamp(28px,5vh,48px);display:grid;gap:12px;justify-items:start}
+.dfoot .btn{min-height:46px;padding:0 24px;font-size:15px}
+.dfoot .dwa{font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.dfoot p{margin:0;font-size:13px;line-height:1.5;color:var(--muted)}
+@media(max-width:860px){.dtop{min-height:58px}.dfoot .btn{justify-self:stretch}}
+@media(prefers-reduced-motion:reduce){.drawer,.dscrim{transition:none}}
+
+/* mapa na identidade do site: tons claros de areia, marca verde */
+.mapx{position:relative;height:clamp(340px,30vw,420px);background:var(--sand) var(--grain);color:var(--ink);overflow:hidden;border:0}
+.mx-map{position:absolute;inset:0;overflow:hidden}
+.mx-map iframe{position:absolute;left:0;top:-140px;width:130%;height:calc(100% + 280px);border:0;filter:grayscale(1) sepia(.28) contrast(.92) brightness(1.04);opacity:.78}
+.mapx::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--sand) 0%,rgba(242,238,231,.96) 28%,rgba(242,238,231,.6) 46%,rgba(242,238,231,0) 66%),linear-gradient(0deg,rgba(242,238,231,.7) 0,rgba(242,238,231,0) 22%)}
+.mx-pin{position:absolute;z-index:2;left:65%;top:50%;width:34px;height:44px;transform:translate(-50%,-100%);pointer-events:none}
+.mx-pin path{fill:var(--acc);stroke:var(--paper)}.mx-pin circle{fill:var(--paper)}
+.mx-txt{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;max-width:1200px;margin:0 auto;padding:0 var(--pad);box-sizing:content-box;pointer-events:none}
+.mx-txt>*{pointer-events:auto;max-width:440px}
+.mx-k{font-size:15px;font-weight:600;color:var(--gold);letter-spacing:-.005em}
+.mx-txt h2{margin:0;font-size:clamp(30px,3.4vw,44px);line-height:1.1;color:var(--ink)}
+.mx-txt h2 em{font-style:normal;color:#8a7a62}
+.mx-ad{display:flex;gap:10px;align-items:flex-start;margin:2px 0 6px;font-size:16px;line-height:1.55;color:var(--muted)}
+.mx-ad svg{flex:none;margin-top:4px;color:var(--gold)}
+.mx-btn{min-height:44px;padding:0 22px;font-size:15px;gap:8px}
+@media(min-width:1248px){.mx-txt{padding:0 max(var(--pad),calc((100vw - 1200px)/2));max-width:none}}
+@media(max-width:760px){
+ .mapx{height:auto;display:flex;flex-direction:column-reverse}
+ .mx-map{position:relative;inset:auto;height:240px}
+ .mx-map iframe{width:100%;left:0}
+ .mapx::before{background:linear-gradient(180deg,var(--sand) 0,rgba(242,238,231,0) 30%);top:auto;height:240px;bottom:0}
+ .mx-pin{left:50%;top:auto;bottom:120px;transform:translate(-50%,0)}
+ .mx-txt{height:auto;padding:48px var(--pad) 28px;gap:12px}
+ .mx-btn{align-self:stretch;max-width:none!important;justify-content:center}
+}
+
+/* rotas animadas e pino 3D */
+.mx-routes{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible}
+.mx-routes .rt-base{fill:none;stroke:var(--paper);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.mx-routes .rt{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.mx-routes .rt.alt{stroke:var(--gold);stroke-dasharray:1;opacity:.85}
+.mapx.inview .mx-routes .rt{animation:rtDraw 2.2s cubic-bezier(.45,.05,.25,1) forwards}
+.mapx.inview .mx-routes .rt-base{animation:rtFade .6s ease forwards}
+.mx-routes .rt-base{opacity:0}
+@keyframes rtDraw{to{stroke-dashoffset:0}}@keyframes rtFade{to{opacity:.9}}
+.mx-routes .car{fill:var(--paper);stroke:var(--acc);stroke-width:2.5;opacity:0}
+.mx-routes .car.alt{stroke:var(--gold)}
+.mx-pin3{position:absolute;z-index:2;left:65%;top:50%;width:0;height:0;pointer-events:none}
+.mx-pinsvg{position:absolute;left:-32px;bottom:0;width:64px;height:84px;max-width:none;max-height:none;transform-origin:50% 100%;filter:drop-shadow(0 6px 5px rgba(20,24,21,.28)) drop-shadow(0 1px 1px rgba(20,24,21,.25))}
+.mx-gsh{position:absolute;left:-15px;top:-5px;width:30px;height:10px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,24,21,.38),rgba(20,24,21,0))}
+.mx-pulse{position:absolute;left:-26px;top:-10px;width:52px;height:20px;border-radius:50%;border:1.5px solid var(--acc);opacity:0}
+.mapx.inview .mx-pulse{animation:mxPulse 2.6s ease-out 2.2s infinite}.mapx.inview .mx-pulse.p2{animation-delay:3.5s}
+@keyframes mxPulse{0%{transform:scale(.4);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+.mapx.inview .mx-pinsvg{animation:mxDrop .7s cubic-bezier(.3,1.5,.5,1) both,mxFloat 3.2s ease-in-out .8s infinite}
+@keyframes mxDrop{0%{transform:translateY(-40px) scale(.9);opacity:0}100%{transform:none;opacity:1}}
+@keyframes mxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:760px){.mx-pin3{left:50%;top:50%}.mx-pinsvg{left:-26px;width:52px;height:68px}}
+@media(prefers-reduced-motion:reduce){.mx-routes .rt{stroke-dashoffset:0;animation:none!important}.mx-routes .rt-base{opacity:.9}.mx-pulse{display:none}.mx-pinsvg{animation:none!important}}
+
+/* sacola: concentra o atendimento montado */
+.cartbar{display:none!important}
+.nav .nr{position:relative}
+.nav .nbag{border:0;background:none;cursor:pointer;padding:0}
+.nav .nbag.bump .nct{animation:bagBump .5s cubic-bezier(.3,1.6,.5,1)}
+.nav .nbag.bump svg{animation:bagWig .5s ease}
+@keyframes bagBump{0%{transform:scale(.5)}100%{transform:scale(1)}}
+@keyframes bagWig{0%,100%{transform:none}30%{transform:rotate(-10deg)}60%{transform:rotate(8deg)}}
+.bagpop{position:absolute;top:calc(100% + 10px);right:0;z-index:70;width:min(360px,calc(100vw - 24px));max-height:min(70vh,560px);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 48px rgba(31,38,33,.14);opacity:0;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease;overflow:hidden}
+.bagpop.on{opacity:1;transform:none}
+.bagpop[hidden]{display:none}
+.bp-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 20px 12px;border-bottom:1px solid var(--line)}
+.bp-head b{font-family:'Marcellus',Georgia,serif;font-weight:400;font-size:19px}
+.bp-head span{font-size:13px;color:var(--muted)}
+.bp-list{list-style:none;margin:0;padding:4px 20px;overflow:auto}
+.bp-list li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid rgba(31,38,33,.08)}
+.bp-list li:last-child{border-bottom:0}
+.bp-list .nm{font-size:15px;line-height:1.3}.bp-list .nm small{display:block;font-size:12px;color:var(--muted)}
+.bp-list .pr{font-size:14px;font-weight:600;text-align:right;white-space:nowrap}.bp-list .pr small{display:block;font-size:11px;font-weight:400;color:var(--muted)}
+.bp-list .rm{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:none;color:var(--muted);cursor:pointer}
+.bp-foot{display:grid;gap:10px;padding:14px 20px 18px;border-top:1px solid var(--line);background:var(--bg)}
+.bp-tot{display:flex;justify-content:space-between;align-items:baseline}.bp-tot span{font-size:13px;color:var(--muted)}.bp-tot b{font-size:20px}
+.bp-foot .btn,.bp-empty .btn{min-height:46px;justify-content:center;font-size:15px}
+.bp-more{justify-self:center;font-size:14px;color:var(--ink);text-underline-offset:3px;padding:6px}
+.bp-empty{display:grid;gap:12px;padding:18px 20px 20px}.bp-empty p{margin:0;color:var(--muted);font-size:15px}
+.bp-empty[hidden],.bp-foot[hidden],.bp-list[hidden]{display:none}
+@media(max-width:860px){.bagpop{position:fixed;top:calc(var(--navh,58px) + var(--bar,0px) + 8px);right:12px;left:12px;width:auto}}
 </style>
 </head>
 <body>
@@ -694,14 +811,36 @@ addEventListener('pageshow',function(e){if(!e.persisted||!tpl)return;var o=docum
 <div class="promo" id="promo"><a href="#agendar" id="promoGo"><span class="pm" aria-live="off"><span class="pmi on">Corte por apenas <b>R$ 97,90</b></span><span class="pmi" aria-hidden="true">Melhor salão de <b>Colombo</b></span></span><span class="pc">Agendar<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
 <header class="nav" id="nav">
  <div class="wrap">
-  <a class="logo" href="#inicio" aria-label="Studio Ana Rafaela, início"><svg class="lgm" aria-hidden="true"><use href="#lgAR"/></svg>Studio Ana Rafaela</a>
-  <button class="menu" id="menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="links"><span></span><span></span></button>
-  <nav class="links" id="links">
-   <a href="#resultados">Resultados</a><a href="#servicos">Serviços</a><a href="#mechas">Mechas</a><a href="#agendar">Agendar</a><a href="#ana">Sobre</a><a href="#espaco">Espaço</a><a href="#contato">Contato</a>
-   <a class="btn pri" href="#servicos">Agendar horário</a>
-  </nav>
+  <div class="nl">
+   <button class="menu" id="menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="links"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg><span class="tx">Menu</span></button>
+  </div>
+  <a class="logo" href="#inicio" aria-label="Studio Ana Rafaela, início"><svg class="lgm" aria-hidden="true"><use href="#lgAR"/></svg><span>Studio Ana Rafaela</span></a>
+  <div class="nr">
+   <a class="ntx" target="_blank" rel="noopener noreferrer" href="https://api.whatsapp.com/send/?phone=%2B554195799662&amp;text=Oi%2C+vim+pelo+site.&amp;type=phone_number&amp;app_absent=0">Fale conosco</a>
+   <a class="nic" href="#servicos" aria-label="Agendar horário" title="Agendar horário"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></a>
+   <button class="nic nbag" type="button" id="bagBtn" aria-label="Meu atendimento" title="Meu atendimento" aria-expanded="false" aria-controls="bagPop"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8.5h12l-1 11H7z"/><path d="M9.5 8.5V7a2.5 2.5 0 0 1 5 0v1.5"/></svg><i class="nct" id="nct" hidden>0</i></button>
+   <div class="bagpop" id="bagPop" role="dialog" aria-label="Meu atendimento" hidden>
+    <div class="bp-head"><b>Meu atendimento</b><span id="bpCount"></span></div>
+    <ul class="bp-list" id="bpList"></ul>
+    <div class="bp-empty" id="bpEmpty"><p>Nenhum serviço escolhido ainda.</p><a class="btn pri" href="#servicos" data-bpclose>Ver serviços</a></div>
+    <div class="bp-foot" id="bpFoot"><div class="bp-tot"><span>Total estimado</span><b id="bpTot">R$ 0,00</b></div><a class="btn pri" href="#agendar" data-bpclose>Escolher dia e horário</a><a class="bp-more" href="#servicos" data-bpclose>Adicionar mais serviços</a></div>
+   </div>
+  </div>
  </div>
 </header>
+<div class="dscrim" id="dscrim" hidden></div>
+<nav class="drawer" id="links" aria-label="Menu" aria-hidden="true">
+ <div class="dtop"><button class="dclose" type="button" id="dclose"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Fechar</span></button></div>
+ <div class="dmain">
+  <a href="#resultados">Resultados</a><a href="#servicos">Serviços e valores</a><a href="#mechas">Pacotes de mechas</a><a href="#agendar">Agendar</a><a href="#ana">Sobre a Ana</a><a href="#equipe">Equipe</a><a href="#depoimentos">Depoimentos</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>
+ </div>
+ <div class="dsec"><a href="#quem-e-ana-rafaela">Nossa história</a><a href="#politica-de-privacidade">Política de privacidade</a></div>
+ <div class="dfoot">
+  <a class="btn pri" href="#servicos">Agendar horário</a>
+  <a class="dwa" target="_blank" rel="noopener noreferrer" href="https://api.whatsapp.com/send/?phone=%2B554195799662&amp;text=Oi%2C+vim+pelo+site.&amp;type=phone_number&amp;app_absent=0">Fale conosco pelo WhatsApp</a>
+  <p>Estrada da Ribeira, 1980<br>Alto Maracanã, Colombo, PR</p>
+ </div>
+</nav>
 
 <main>
 <div class="herostick" id="herostick">
@@ -735,8 +874,9 @@ addEventListener('pageshow',function(e){if(!e.persisted||!tpl)return;var o=docum
     <path d="M100 600V250a180 180 0 0 1 360 0v350z" fill="url(#sky)"/>
     <g clip-path="url(#ac)" fill="none" stroke-linecap="round">
      <circle cx="300" cy="215" r="112" fill="#fdf9f0" opacity=".9"/>
-     <image class="ana-cut" clip-path="url(#anaclip)" href="img/ana-recorte.webp" x="125" y="150" width="310" height="465" preserveAspectRatio="xMidYMin meet"><title>Ana Rafaela</title></image>
+     
     </g></g>
+    <image class="ana-cut" clip-path="url(#anaclip)" href="img/ana-recorte.webp" x="78.5" y="60" width="403" height="604.5" preserveAspectRatio="xMidYMin meet"><title>Ana Rafaela</title></image>
     <ellipse cx="280" cy="602" rx="250" ry="10" fill="#2f3b33" opacity=".1"/>
     <rect x="56" y="548" width="448" height="26" rx="3" fill="url(#marble)"/>
     <path d="M90 556c40 6 70-4 110 4s80 8 120-2M300 566c30-4 70 2 120-6" stroke="#cfc3ab" stroke-width="1" fill="none"/>
@@ -929,7 +1069,34 @@ addEventListener('pageshow',function(e){if(!e.persisted||!tpl)return;var o=docum
   </div>
  </div>
 </section>
-<div class="mapbox mapfull" id="mapbox"><iframe src="https://www.google.com/maps?q=Studio+Ana+Rafaela,+Estrada+da+Ribeira+1980,+Alto+Maracan%C3%A3,+Colombo+-+PR&amp;output=embed" title="Mapa do Studio Ana Rafaela" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+<section class="mapbox mapfull mapx" id="mapbox" aria-labelledby="mapt">
+ <div class="mx-map" aria-hidden="true"><iframe src="https://www.google.com/maps?q=Studio+Ana+Rafaela,+Estrada+da+Ribeira+1980,+Alto+Maracan%C3%A3,+Colombo+-+PR&amp;z=15&amp;output=embed" title="Mapa do Studio Ana Rafaela" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1"></iframe>
+  <svg class="mx-routes" id="mxRoutes" aria-hidden="true"></svg>
+  <div class="mx-pin3" aria-hidden="true">
+   <span class="mx-pulse"></span><span class="mx-pulse p2"></span><span class="mx-gsh"></span>
+   <svg viewBox="0 0 64 84" class="mx-pinsvg"><defs>
+    <radialGradient id="pinBody" cx="34%" cy="28%" r="78%"><stop offset="0" stop-color="#4fae76"/><stop offset=".45" stop-color="#2a7a4b"/><stop offset=".85" stop-color="#18532f"/><stop offset="1" stop-color="#0f3a20"/></radialGradient>
+    <linearGradient id="pinRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7cc79a" stop-opacity=".9"/><stop offset=".5" stop-color="#2a7a4b" stop-opacity="0"/><stop offset="1" stop-color="#0b2b17" stop-opacity=".6"/></linearGradient>
+    <radialGradient id="pinCore" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#f3eee5"/><stop offset="1" stop-color="#cfc6b6"/></radialGradient>
+    <linearGradient id="pinHole" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f3a20" stop-opacity=".55"/><stop offset="1" stop-color="#0f3a20" stop-opacity="0"/></linearGradient>
+   </defs>
+    <path d="M32 82C32 82 6 52 6 31a26 26 0 0 1 52 0c0 21-26 51-26 51z" fill="url(#pinBody)"/>
+    <path d="M32 82C32 82 6 52 6 31a26 26 0 0 1 52 0c0 21-26 51-26 51z" fill="none" stroke="url(#pinRim)" stroke-width="1.6"/>
+    <ellipse cx="22" cy="17" rx="10" ry="6.5" transform="rotate(-28 22 17)" fill="#fff" opacity=".42"/>
+    <ellipse cx="18.5" cy="14.5" rx="3.6" ry="2.2" transform="rotate(-28 18.5 14.5)" fill="#fff" opacity=".75"/>
+    <circle cx="32" cy="31" r="11.5" fill="url(#pinHole)"/>
+    <circle cx="32" cy="31.6" r="9.5" fill="url(#pinCore)"/>
+    <use href="#lgAR" x="25" y="24.5" width="14" height="14" style="color:#2a7a4b;--lg2:#8c6f45"/>
+   </svg>
+  </div>
+ </div>
+ <div class="mx-txt">
+  <span class="mx-k">Onde estamos</span>
+  <h2 id="mapt">Estamos em <em>Colombo</em></h2>
+  <p class="mx-ad"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Estrada da Ribeira, 1980<br>Alto Maracanã, Colombo, PR</span></p>
+  <a class="btn pri mx-btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&amp;destination=Studio+Ana+Rafaela,+Estrada+da+Ribeira+1980,+Alto+Maracan%C3%A3,+Colombo+-+PR">Como chegar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+ </div>
+</section>
 </main>
 <section class="legal" id="historia" aria-labelledby="hst">
  <div class="wrap">
@@ -1063,10 +1230,14 @@ const totals=()=>cart.reduce((a,id)=>({v:a.v+CAT[id].v,m:a.m+CAT[id].m,f:a.f||CA
 /* nav */
 const nav=$('nav'),menu=$('menu'),links=$('links'),toTop=$('toTop');
 const setNavH=()=>{const r=document.documentElement.style;r.setProperty('--navh',nav.offsetHeight+'px');const pr=$('promo');if(pr)r.setProperty('--promoh',pr.offsetHeight+'px');const m=document.querySelector('.mq');if(m)r.setProperty('--mqh',m.offsetHeight+'px')};setNavH();addEventListener('resize',setNavH);addEventListener('load',setNavH);if(document.fonts)document.fonts.ready.then(setNavH);
-const setMenu=o=>{if(o){setNavH();links.style.top=Math.max(0,nav.getBoundingClientRect().bottom)+'px'}else links.style.top='';links.classList.toggle('open',o);menu.setAttribute('aria-expanded',o);menu.setAttribute('aria-label',o?'Fechar menu':'Abrir menu');document.body.style.overflow=o?'hidden':''};
+const dscrim=$('dscrim');let dT=0;const setMenu=o=>{clearTimeout(dT);if(o){dscrim.hidden=false;void dscrim.offsetWidth}links.classList.toggle('open',o);dscrim.classList.toggle('on',o);links.setAttribute('aria-hidden',!o);if('inert' in links)links.inert=!o;menu.setAttribute('aria-expanded',o);menu.setAttribute('aria-label',o?'Fechar menu':'Abrir menu');document.documentElement.style.overflow=o?'hidden':'';if(o)setTimeout(()=>$('dclose').focus({preventScroll:true}),60);else dT=setTimeout(()=>{dscrim.hidden=true},400)};
+if('inert' in links)links.inert=true;
+$('dclose').addEventListener('click',()=>{setMenu(false);menu.focus({preventScroll:true})});dscrim.addEventListener('click',()=>setMenu(false));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);menu.focus({preventScroll:true})}});
+document.querySelectorAll('[data-srch]').forEach(b=>b.addEventListener('click',()=>{const was=links.classList.contains('open');if(was)setMenu(false);if(document.body.classList.contains('legal-on'))location.hash='#servicos';setTimeout(()=>{const sv=$('servicos'),q=$('q');if(!sv||!q)return;const y=q.getBoundingClientRect().top+scrollY-innerHeight*.3;scrollTo({top:y,behavior:RM?'auto':'smooth'});setTimeout(()=>q.focus({preventScroll:true}),RM?0:600)},was?120:0)}));
 menu.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
 links.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
-addEventListener('resize',()=>{if(innerWidth>1080&&links.classList.contains('open'))setMenu(false)});
+
 let tick=false;
 addEventListener('scroll',()=>{if(tick)return;tick=true;requestAnimationFrame(()=>{const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('scrolled',y>8);heroAnim();addEventListener('load',()=>{scOff=null;heroAnim()});promoTick();toTop.classList.toggle('show',y>innerHeight);onScrollExtra();tick=false})},{passive:true});
 /* hero: underwater hair waves */
@@ -1230,14 +1401,22 @@ const setCb=o=>{cbOpen=o&&cart.length>0;cb.classList.toggle('open',cbOpen);$('cb
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(links.classList.contains('open')){setMenu(false);menu.focus()}setCb(false)}});
 let inBook=false;
 const renderBar=()=>{
- const t=totals(),show=cart.length>0&&!inBook&&!inFoot;
+ const t=totals(),show=false;
+ {const L=$('bpList');if(L){L.innerHTML=cart.map(id=>{const k=CAT[id];return `<li><span class="nm">${esc(k.n)}<small>${k.c}</small></span><span class="pr">${k.f?'<small>a partir de</small>':''}${brl(k.v)}</span><button type="button" class="rm" data-rm="${esc(id)}" aria-label="Remover ${esc(k.n)}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></li>`}).join('');$('bpTot').textContent=brl(t.v);$('bpCount').textContent=cart.length?(cart.length+(cart.length>1?' serviços':' serviço')):'';$('bpEmpty').hidden=!!cart.length;$('bpFoot').hidden=!cart.length;L.hidden=!cart.length}
+  const nc=$('nct');if(nc){const prev=+nc.dataset.n||0;if(cart.length>prev&&!RM){const bb=$('bagBtn');bb.classList.remove('bump');void bb.offsetWidth;bb.classList.add('bump')}nc.dataset.n=cart.length}}
  $('cbSum').innerHTML=`<span class="n">${cart.length}</span><span class="lb">${cart.length>1?'serviços':'serviço'}<small>Total estimado</small></span><b>${brl(t.v)}</b><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 15l6-6 6 6"/></svg>`;
  $('cbList').innerHTML=cart.map(id=>`<li><span>${esc(CAT[id].n)}</span><span>${brl(CAT[id].v)}<button type="button" class="rm" data-rm="${esc(id)}" aria-label="Remover ${esc(CAT[id].n)}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span></li>`).join('');
+ {const nc=$('nct');if(nc){nc.textContent=cart.length;nc.hidden=!cart.length}}
  cb.classList.toggle('show',show);document.body.classList.toggle('has-cart',show);
  if(!cart.length)setCb(false);
 };
 $('cbSum').addEventListener('click',()=>setCb(!cbOpen));
 $('cbGo').addEventListener('click',()=>setCb(false));
+{const bb=$('bagBtn'),bp=$('bagPop');let bpT=0;const setBag=o=>{clearTimeout(bpT);if(o){bp.hidden=false;void bp.offsetWidth}bp.classList.toggle('on',o);bb.setAttribute('aria-expanded',o);if(!o)bpT=setTimeout(()=>{bp.hidden=true},220)};
+ bb.addEventListener('click',e=>{e.stopPropagation();setBag(!bp.classList.contains('on'))});
+ bp.addEventListener('click',e=>{if(e.target.closest('[data-bpclose]'))setBag(false)});
+ document.addEventListener('click',e=>{if(bp.classList.contains('on')&&!e.composedPath().includes(bp)&&!e.composedPath().includes(bb))setBag(false)},true);
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&bp.classList.contains('on')){setBag(false);bb.focus()}});}
 const bookEl=$('agendar'),footEl=document.querySelector('footer');let inFoot=false;const checkBook=()=>{const r=bookEl.getBoundingClientRect(),v=r.top<innerHeight*.75&&r.bottom>innerHeight*.25,f=footEl.getBoundingClientRect().top<innerHeight-(cb.offsetHeight||70)*.6;if(v!==inBook||f!==inFoot){inBook=v;inFoot=f;if(f)setCb(false);renderBar()}};
 
 let proList=[];
@@ -1419,5 +1598,23 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 onScrollExtra();
 }
 </script>
+<script>(function(){var mq=matchMedia('(min-width:861px) and (orientation:landscape),(min-width:1101px)');function al(){var t=document.querySelector('.hero .txt'),b=document.querySelector('.hero .sbox'),w=document.querySelector('.hero>.wrap');if(!t||!b||!w)return;t.classList.remove('al');t.style.marginTop='';if(!mq.matches)return;var bb=b.getBoundingClientRect(),wb=w.getBoundingClientRect(),a=bb.top+bb.height*52/620-wb.top,h1=t.querySelector('h1'),fx=h1?(h1.getBoundingClientRect().top-t.getBoundingClientRect().top):0;var top=a-fx-Math.round(parseFloat(getComputedStyle(h1).fontSize)*.12);var nb=(document.getElementById('nav')||w).getBoundingClientRect().bottom;if(wb.top+top<nb+8||top+t.offsetHeight>wb.height)return;t.classList.add('al');t.style.marginTop=top+'px'}addEventListener('resize',al);addEventListener('load',al);document.fonts&&document.fonts.ready.then(al);al()})();</script>
+<script>(function(){var sec=document.getElementById('mapbox'),svg=document.getElementById('mxRoutes');if(!sec||!svg)return;var NS='http://www.w3.org/2000/svg',RMm=matchMedia('(prefers-reduced-motion: reduce)').matches,cars=[],raf=0,vis=false,t0=0;
+function routes(W,H,mob){var px=W*(mob?.5:.65),py=H*.5;var r=mob?[
+ [[W*.06,-8],[W*.14,H*.28],[px-60,py-50],[px,py],0],
+ [[W+8,H*.18],[W*.8,H*.28],[px+70,py-20],[px,py],1],
+ [[W*.92,H+8],[W*.86,H*.66],[px+40,py+40],[px,py],0]]:[
+ [[W*.84,-8],[W*.8,H*.2],[px+90,py-70],[px,py],0],
+ [[W+8,H*.66],[W*.9,H*.6],[px+120,py+30],[px,py],1],
+ [[W*.72,H+8],[W*.7,H*.8],[px+30,py+60],[px,py],0],
+ [[W*.42,H*.9],[W*.5,H*.78],[px-110,py+40],[px,py],1]];
+ return r.map(function(a){return{d:'M'+a[0]+' C'+a[1]+' '+a[2]+' '+a[3],alt:a[4]}})}
+function build(){var b=sec.querySelector('.mx-map').getBoundingClientRect(),W=Math.round(b.width),H=Math.round(b.height);if(!W||!H)return;var mob=matchMedia('(max-width:760px)').matches;svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML='';cars=[];
+ routes(W,H,mob).forEach(function(r,i){var base=document.createElementNS(NS,'path');base.setAttribute('d',r.d);base.setAttribute('class','rt-base');svg.appendChild(base);
+  var p=document.createElementNS(NS,'path');p.setAttribute('d',r.d);p.setAttribute('pathLength','1');p.setAttribute('class','rt'+(r.alt?' alt':''));p.style.animationDelay=(.25+i*.35)+'s';svg.appendChild(p);
+  var c=document.createElementNS(NS,'circle');c.setAttribute('r','5');c.setAttribute('class','car'+(r.alt?' alt':''));svg.appendChild(c);cars.push({p:p,c:c,len:p.getTotalLength(),off:i*.27,dur:3600+i*500})})}
+function tick(n){if(!t0)t0=n;var e=n-t0;cars.forEach(function(k){var s=e-2600-k.off*1000;if(s<0){k.c.style.opacity=0;return}var u=(s%k.dur)/k.dur,ez=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2,pt=k.p.getPointAtLength(ez*k.len);k.c.setAttribute('cx',pt.x.toFixed(1));k.c.setAttribute('cy',pt.y.toFixed(1));k.c.style.opacity=(u<.08?u/.08:u>.88?(1-u)/.12:1).toFixed(2)});raf=vis?requestAnimationFrame(tick):0}
+build();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,150)});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;if(vis){sec.classList.add('inview');if(!RMm&&!raf)raf=requestAnimationFrame(tick)}})},{threshold:.35}).observe(sec);else sec.classList.add('inview')})();</script>
 </body>
 </html>
