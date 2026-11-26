@@ -784,6 +784,14 @@ img,svg,picture,canvas,.tile,.pimg,.aphoto,.loc,.lbox,.stage,.scene,.mapx,.btn,b
 img{pointer-events:auto}
 .btn::selection,button::selection,img::selection{background:transparent}
 :focus:not(:focus-visible){outline:none}
+
+/* barra de rolagem fina na identidade do site (menu e sacola) */
+.drawer,.bp-list,.bagpop{scrollbar-width:thin;scrollbar-color:#cdbf9f transparent}
+.drawer::-webkit-scrollbar,.bp-list::-webkit-scrollbar,.bagpop::-webkit-scrollbar{width:3px;height:3px}
+.drawer::-webkit-scrollbar-track,.bp-list::-webkit-scrollbar-track,.bagpop::-webkit-scrollbar-track{background:transparent}
+.drawer::-webkit-scrollbar-thumb,.bp-list::-webkit-scrollbar-thumb,.bagpop::-webkit-scrollbar-thumb{background:#cdbf9f;border-radius:99px}
+.drawer::-webkit-scrollbar-thumb:hover,.bp-list::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+.drawer::-webkit-scrollbar-button,.bp-list::-webkit-scrollbar-button{display:none;height:0;width:0}
 </style>
 </head>
 <body>
