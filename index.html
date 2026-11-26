@@ -563,7 +563,7 @@ main>section.band.dark,main>section.band.deep,footer{background-image:var(--grai
 #servicos{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--paper) 0,var(--paper) calc(100% - 100px),var(--sand) 100%)!important}#mechas{border-top:0!important}
 #experiencia{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--paper) 0,var(--paper) calc(100% - 120px),var(--bg) 100%)!important}#ana{border-top:0!important}
 #faixa{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--sand) 0,var(--sand) calc(100% - 110px),var(--paper) 100%)!important}#servicos{border-top:0!important}
-#depoimentos{background:linear-gradient(180deg,var(--sand) 0,var(--sand) calc(100% - 110px),var(--bg) 100%)!important}#duvidas{border-top:0!important}
+#depoimentos{background:var(--grain) 0 0/180px 180px,linear-gradient(180deg,var(--sand) 0,var(--sand) calc(100% - 240px),color-mix(in srgb,var(--sand) 50%,var(--bg)) calc(100% - 120px),var(--bg) 100%)!important}#duvidas{border-top:0!important}
 .opt{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:99px;background:var(--sand);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.02em;vertical-align:1px}
 .obsq{display:grid;gap:10px}.obsl{margin:0;font-weight:500}
 .yn{display:flex;gap:8px}.yn button{min-width:84px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:500;cursor:pointer;transition:transform .15s,border-color .2s,background-color .2s}
@@ -699,7 +699,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 
 /* mapa na identidade do site: tons claros de areia, marca verde */
 .mapx{position:relative;height:clamp(340px,30vw,420px);background:var(--sand) var(--grain);color:var(--ink);overflow:hidden;border:0}
-.mx-map{position:absolute;inset:0;overflow:hidden}.mx-map iframe{pointer-events:none}
+.mx-map{position:absolute;inset:0;overflow:hidden}.mx-map iframe{pointer-events:none}.mx-map::after{content:"";position:absolute;inset:0;z-index:1;touch-action:pan-y}
 .mx-map iframe{position:absolute;left:0;top:-140px;width:130%;height:calc(100% + 280px);border:0;filter:grayscale(1) sepia(.28) contrast(.92) brightness(1.04);opacity:.78}
 .mapx::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--sand) 0%,rgba(242,238,231,.96) 28%,rgba(242,238,231,.6) 46%,rgba(242,238,231,0) 66%),linear-gradient(0deg,rgba(242,238,231,.7) 0,rgba(242,238,231,0) 22%)}
 .mx-pin{position:absolute;z-index:2;left:65%;top:50%;width:34px;height:44px;transform:translate(-50%,-100%);pointer-events:none}
@@ -734,7 +734,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 @keyframes rtDraw{to{stroke-dashoffset:0}}@keyframes rtFade{to{opacity:.9}}
 .mx-routes .car{fill:var(--paper);stroke:var(--acc);stroke-width:2.5;opacity:0}
 .mx-routes .car.alt{stroke:var(--gold)}
-.mx-pin3{position:absolute;z-index:2;left:65%;top:50%;width:0;height:0;pointer-events:none}
+.mx-pin3{position:absolute;z-index:2;left:calc(65% + 19px);top:calc(50% - 22px);width:0;height:0;pointer-events:none}
 .mx-pinsvg{position:absolute;left:-32px;bottom:0;width:64px;height:84px;max-width:none;max-height:none;transform-origin:50% 100%;filter:drop-shadow(0 6px 5px rgba(20,24,21,.28)) drop-shadow(0 1px 1px rgba(20,24,21,.25))}
 .mx-gsh{position:absolute;left:-15px;top:-5px;width:30px;height:10px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,24,21,.38),rgba(20,24,21,0))}
 .mx-pulse{position:absolute;left:-26px;top:-10px;width:52px;height:20px;border-radius:50%;border:1.5px solid var(--acc);opacity:0}
@@ -743,7 +743,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 .mapx.inview .mx-pinsvg{animation:mxDrop .7s cubic-bezier(.3,1.5,.5,1) both,mxFloat 3.2s ease-in-out .8s infinite}
 @keyframes mxDrop{0%{transform:translateY(-40px) scale(.9);opacity:0}100%{transform:none;opacity:1}}
 @keyframes mxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@media(max-width:760px){.mx-pin3{left:50%;top:50%}.mx-pinsvg{left:-26px;width:52px;height:68px}}
+@media(max-width:760px){.mx-pin3{left:calc(50% + 19px);top:calc(50% - 22px)}.mx-pinsvg{left:-26px;width:52px;height:68px}}
 @media(prefers-reduced-motion:reduce){.mx-routes .rt{stroke-dashoffset:0;animation:none!important}.mx-routes .rt-base{opacity:.9}.mx-pulse{display:none}.mx-pinsvg{animation:none!important}}
 
 /* sacola: concentra o atendimento montado */
@@ -773,6 +773,17 @@ html.pre-on,html.pre-on body{overflow:hidden}
 .bp-empty{display:grid;gap:12px;padding:18px 20px 20px}.bp-empty p{margin:0;color:var(--muted);font-size:15px}
 .bp-empty[hidden],.bp-foot[hidden],.bp-list[hidden]{display:none}
 @media(max-width:860px){.bagpop{position:fixed;top:calc(var(--navh,58px) + var(--bar,0px) + 8px);right:12px;left:12px;width:auto}}
+
+.mx-routes .rt-lb{opacity:0}.mapx.inview .mx-routes .rt-lb{animation:rtFade .5s ease forwards}
+.mx-routes .rt-lb rect{fill:var(--card);stroke:var(--line)}
+.mx-routes .rt-lb text{font:600 11.5px var(--font);fill:var(--acc)}.mx-routes .rt-lb.alt text{fill:var(--gold)}
+
+/* protecao: imagens e botoes nao selecionam, nao arrastam e nao abrem menu */
+html{-webkit-tap-highlight-color:transparent}
+img,svg,picture,canvas,.tile,.pimg,.aphoto,.loc,.lbox,.stage,.scene,.mapx,.btn,button,[data-add],[data-rm],.add,.wa,.nic,.qrow,.nav,.drawer a,.mx-btn,a[href*="whatsapp"],a[href*="wa.me"]{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
+img{pointer-events:auto}
+.btn::selection,button::selection,img::selection{background:transparent}
+:focus:not(:focus-visible){outline:none}
 </style>
 </head>
 <body>
@@ -1523,7 +1534,11 @@ $('mosaic').innerHTML=tileHtml('resultados',RES);$('space').innerHTML=tileHtml('
 document.querySelectorAll('img[data-foto]').forEach(im=>{im.src=foto(im.dataset.foto)});
 document.addEventListener('error',e=>{const im=e.target;if(im.tagName!=='IMG')return;if(im.closest('.aphoto')){im.remove();return}const t=im.closest('.tile,.aphoto,.loc');if(!t)return;t.style.display='none';const m=t.closest('.mosaic');if(m&&[...m.children].every(x=>x.style.display==='none')){const sec=m.closest('section');sec.style.display='none';const a=document.querySelector(`.links a[href="#${sec.id}"]`);if(a)a.style.display='none'}},true);
 /* protecao de imagens */
-document.addEventListener('contextmenu',e=>{if(e.target.closest('img,.tile,.pimg,.aphoto,.loc,.lbox'))e.preventDefault()});
+const PROT='img,svg,picture,video,canvas,.tile,.pimg,.aphoto,.loc,.lbox,.stage,.scene,.mapx,.btn,button,[data-add],[data-rm],.add,.wa,.nic,.qrow,a[href*="whatsapp"],a[href*="wa.me"],.mx-btn,.links a,.drawer a';
+document.addEventListener('contextmenu',e=>{if(e.target.closest(PROT))e.preventDefault()});
+document.addEventListener('dragstart',e=>{if(e.target.closest&&e.target.closest('img,svg,a,button,.tile,.pimg,.aphoto'))e.preventDefault()});
+document.addEventListener('selectstart',e=>{const t=e.target.nodeType===1?e.target:e.target.parentElement;if(t&&t.closest(PROT))e.preventDefault()});
+const noDrag=r=>r.querySelectorAll('img').forEach(i=>{i.draggable=false;i.setAttribute('draggable','false')});noDrag(document);new MutationObserver(m=>m.forEach(x=>x.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.tagName==='IMG')n.draggable=false;else noDrag(n)}}))).observe(document.body,{childList:true,subtree:true});
 document.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG')e.preventDefault()});
 document.addEventListener('selectstart',e=>{if(e.target.closest&&e.target.closest('.tile,.lbox'))e.preventDefault()});
 /* ===== CONFIGURACAO (preencha quando tiver) ===== */
@@ -1600,18 +1615,15 @@ onScrollExtra();
 </script>
 <script>(function(){var mq=matchMedia('(min-width:861px) and (orientation:landscape),(min-width:1101px)');function al(){var t=document.querySelector('.hero .txt'),b=document.querySelector('.hero .sbox'),w=document.querySelector('.hero>.wrap');if(!t||!b||!w)return;t.classList.remove('al');t.style.marginTop='';if(!mq.matches)return;var bb=b.getBoundingClientRect(),wb=w.getBoundingClientRect(),a=bb.top+bb.height*52/620-wb.top,h1=t.querySelector('h1'),fx=h1?(h1.getBoundingClientRect().top-t.getBoundingClientRect().top):0;var top=a-fx-Math.round(parseFloat(getComputedStyle(h1).fontSize)*.12);var nb=(document.getElementById('nav')||w).getBoundingClientRect().bottom;if(wb.top+top<nb+8||top+t.offsetHeight>wb.height)return;t.classList.add('al');t.style.marginTop=top+'px'}addEventListener('resize',al);addEventListener('load',al);document.fonts&&document.fonts.ready.then(al);al()})();</script>
 <script>(function(){var sec=document.getElementById('mapbox'),svg=document.getElementById('mxRoutes');if(!sec||!svg)return;var NS='http://www.w3.org/2000/svg',RMm=matchMedia('(prefers-reduced-motion: reduce)').matches,cars=[],raf=0,vis=false,t0=0;
-function routes(W,H,mob){var px=W*(mob?.5:.65),py=H*.5;var r=mob?[
- [[W*.06,-8],[W*.14,H*.28],[px-60,py-50],[px,py],0],
- [[W+8,H*.18],[W*.8,H*.28],[px+70,py-20],[px,py],1],
- [[W*.92,H+8],[W*.86,H*.66],[px+40,py+40],[px,py],0]]:[
- [[W*.84,-8],[W*.8,H*.2],[px+90,py-70],[px,py],0],
- [[W+8,H*.66],[W*.9,H*.6],[px+120,py+30],[px,py],1],
- [[W*.72,H+8],[W*.7,H*.8],[px+30,py+60],[px,py],0],
- [[W*.42,H*.9],[W*.5,H*.78],[px-110,py+40],[px,py],1]];
- return r.map(function(a){return{d:'M'+a[0]+' C'+a[1]+' '+a[2]+' '+a[3],alt:a[4]}})}
+function routes(W,H,mob){var lx=W*(mob?.5:.65)+19,ly=H*.5-22;var P=function(a){return a.map(function(q){return[lx+q[0],ly+q[1]]})};
+ /* BR-476 (Estrada da Ribeira), tracada sobre o mapa no zoom 15, em px a partir do Studio */
+ var N=P([[119,-300],[90,-191],[69,-111],[49,-66],[19,-21],[0,0]]),S=P([[-205,300],[-138,204],[-111,164],[-76,114],[-41,64],[-13,24],[0,0]]);
+ var path=function(p){var d='M'+p[0][0].toFixed(1)+' '+p[0][1].toFixed(1);for(var i=1;i<p.length-1;i++){var mx=(p[i][0]+p[i+1][0])/2,my=(p[i][1]+p[i+1][1])/2;d+=' Q'+p[i][0].toFixed(1)+' '+p[i][1].toFixed(1)+' '+mx.toFixed(1)+' '+my.toFixed(1)}var e=p[p.length-1];return d+' L'+e[0].toFixed(1)+' '+e[1].toFixed(1)};
+ return[{d:path(N),alt:0,lb:'Vindo da Ribeira · BR-476',at:[lx+49+14,ly-66]},{d:path(S),alt:1,lb:'Vindo de Curitiba · BR-476',at:[lx-41+14,ly+64]}]}
 function build(){var b=sec.querySelector('.mx-map').getBoundingClientRect(),W=Math.round(b.width),H=Math.round(b.height);if(!W||!H)return;var mob=matchMedia('(max-width:760px)').matches;svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML='';cars=[];
  routes(W,H,mob).forEach(function(r,i){var base=document.createElementNS(NS,'path');base.setAttribute('d',r.d);base.setAttribute('class','rt-base');svg.appendChild(base);
   var p=document.createElementNS(NS,'path');p.setAttribute('d',r.d);p.setAttribute('pathLength','1');p.setAttribute('class','rt'+(r.alt?' alt':''));p.style.animationDelay=(.25+i*.35)+'s';svg.appendChild(p);
+  if(r.lb){var gl=document.createElementNS(NS,'g');gl.setAttribute('class','rt-lb'+(r.alt?' alt':''));gl.style.animationDelay=(1.4+i*.35)+'s';var tx=document.createElementNS(NS,'text');tx.setAttribute('x',r.at[0]+12);tx.setAttribute('y',r.at[1]+4);tx.textContent=r.lb;gl.appendChild(tx);svg.appendChild(gl);var bb=tx.getBBox(),rc=document.createElementNS(NS,'rect');rc.setAttribute('x',bb.x-9);rc.setAttribute('y',bb.y-5);rc.setAttribute('width',bb.width+18);rc.setAttribute('height',bb.height+10);rc.setAttribute('rx',(bb.height+10)/2);gl.insertBefore(rc,tx)}
   var c=document.createElementNS(NS,'circle');c.setAttribute('r','5');c.setAttribute('class','car'+(r.alt?' alt':''));svg.appendChild(c);cars.push({p:p,c:c,len:p.getTotalLength(),off:i*.27,dur:3600+i*500})})}
 function tick(n){if(!t0)t0=n;var e=n-t0;cars.forEach(function(k){var s=e-2600-k.off*1000;if(s<0){k.c.style.opacity=0;return}var u=(s%k.dur)/k.dur,ez=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2,pt=k.p.getPointAtLength(ez*k.len);k.c.setAttribute('cx',pt.x.toFixed(1));k.c.setAttribute('cy',pt.y.toFixed(1));k.c.style.opacity=(u<.08?u/.08:u>.88?(1-u)/.12:1).toFixed(2)});raf=vis?requestAnimationFrame(tick):0}
 build();var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(build,150)});
