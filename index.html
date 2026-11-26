@@ -699,7 +699,7 @@ html.pre-on,html.pre-on body{overflow:hidden}
 
 /* mapa na identidade do site: tons claros de areia, marca verde */
 .mapx{position:relative;height:clamp(340px,30vw,420px);background:var(--sand) var(--grain);color:var(--ink);overflow:hidden;border:0}
-.mx-map{position:absolute;inset:0;overflow:hidden}
+.mx-map{position:absolute;inset:0;overflow:hidden}.mx-map iframe{pointer-events:none}
 .mx-map iframe{position:absolute;left:0;top:-140px;width:130%;height:calc(100% + 280px);border:0;filter:grayscale(1) sepia(.28) contrast(.92) brightness(1.04);opacity:.78}
 .mapx::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--sand) 0%,rgba(242,238,231,.96) 28%,rgba(242,238,231,.6) 46%,rgba(242,238,231,0) 66%),linear-gradient(0deg,rgba(242,238,231,.7) 0,rgba(242,238,231,0) 22%)}
 .mx-pin{position:absolute;z-index:2;left:65%;top:50%;width:34px;height:44px;transform:translate(-50%,-100%);pointer-events:none}
